@@ -34,8 +34,12 @@ export function Menu() {
   let user = useContext(userContext);
   return (
     <nav className="font-menu bg-warning p-3 mb-3 text-left">
+      <span role="img" aria-label="dog">
+        🍙🍚🍺
+      </span>
       <Link path="/main" linkName="หน้าเเรก" />
       <Link path="/menuList" linkName="เมนูอาหารญี่ปุ่น" />
+
       <Link path="/contact" linkName="ผู้จัดทำ" />
 
       <span className="px-2 text-light">{user}</span>

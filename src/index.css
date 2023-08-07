@@ -88,3 +88,6 @@ code {
   width: 90%;
   margin: auto;
 }
+.message {
+  color: red;
+}
