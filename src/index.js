@@ -9,6 +9,7 @@ import FoodList1 from "./foodList1";
 import FoodList2 from "./foodList2";
 import FoodList3 from "./foodList3";
 import BackTotop from "./backTotop";
+import MenuList from "./menuList";
 
 import { userContext } from "./context";
 
@@ -34,7 +35,7 @@ export function Menu() {
   return (
     <nav className="font-menu bg-warning p-3 mb-3 text-left">
       <Link path="/main" linkName="หน้าเเรก" />
-      <Link path="/courses" linkName="เมนูอาหารญี่ปุ่น" />
+      <Link path="/menuList" linkName="เมนูอาหารญี่ปุ่น" />
       <Link path="/contact" linkName="ผู้จัดทำ" />
 
       <span className="px-2 text-light">{user}</span>
@@ -158,82 +159,6 @@ function FoodList() {
 //   );
 // }
 
-function Courses() {
-  const table = useRef();
-  const tr = useRef([]);
-  const data = [
-    ["JS", 1000],
-    ["React", 1500],
-    ["Django", 2000],
-    ["Fluter", 2500],
-  ];
-
-  const deleteRow = (i) => {
-    const index = tr.current[i].rowIndex;
-    table.current.deleteRow(index);
-  };
-
-  return (
-    <>
-      <Menu />
-      <h3>Courses</h3>
-      {/* <Button>Click Me</Button> */}
-      <Table striped bordered hover className="my-3" ref={table}>
-        <thead>
-          <tr>
-            <th>Courses</th>
-            <th>Price</th>
-            <th className="text-center">Delete</th>
-          </tr>
-        </thead>
-
-        {/* <tbody>
-          <tr>
-            <td>{data[0][0]}</td>
-            <td>{data[0][1]}</td>
-            <td>-</td>
-          </tr>
-
-          <tr>
-            <td>{data[1][0]}</td>
-            <td>{data[1][1]}</td>
-            <td>-</td>
-          </tr>
-
-          <tr>
-            <td>{data[2][0]}</td>
-            <td>{data[2][1]}</td>
-            <td>-</td>
-          </tr>
-
-          <tr>
-            <td>{data[3][0]}</td>
-            <td>{data[3][1]}</td>
-            <td>-</td>
-          </tr>
-        </tbody> */}
-
-        <tbody>
-          {data.map((item, i) => {
-            return (
-              <tr ref={(el) => (tr.current[i] = el)} key={i}>
-                <td>{item[0]}</td>
-                <td>{item[1]}</td>
-                <td className="text-center">
-                  {" "}
-                  <Button variant="danger" onClick={() => deleteRow(i)}>
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    </>
-  );
-}
-
 function App() {
   return (
     <userContext.Provider>
@@ -242,11 +167,11 @@ function App() {
           <Routes>
             <Route path="/" element={<FoodList />} />
             <Route path="/main" element={<FoodList />} />
-            <Route path="/courses" element={<Courses />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/foodList1" element={<FoodList1 />} />
             <Route path="/foodList2" element={<FoodList2 />} />
             <Route path="/foodList3" element={<FoodList3 />} />
+            <Route path="/menuList" element={<MenuList />} />
           </Routes>
         </Container>
       </BrowserRouter>
